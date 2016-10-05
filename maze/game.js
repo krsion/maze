@@ -1,5 +1,5 @@
 class Game {
-    constructor(area, cursor) {
+    constructor(area, cursor, position) {
         this.area = area;
         this.cursor = cursor;
         /*
