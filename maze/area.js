@@ -4,7 +4,6 @@ class Area {
         this.canvas.width = wallSize * size;
         this.canvas.height = wallSize * size;
         this.context = this.canvas.getContext("2d");
-        document.body.appendChild(this.canvas);
 
         this.wall = wall;
         this.ground = ground;
@@ -18,7 +17,6 @@ class Area {
             }
         }
     }
-
     toPx(num) {
         return num * this.wallSize;
     }
@@ -31,6 +29,16 @@ class Area {
             for (let x = 0; x < this.sizes; x++) {
                 this.context.fillStyle = this.array[y][x];
                 this.context.fillRect(this.toPx(x), this.toPx(y), this.wallSize, this.wallSize);
+            }
+        }
+    }
+    restart() {
+        this.context.clearRect(0,0, this.toPx(this.sizes), this.toPx(this.sizes));
+        this.array = [];
+        for (let i = 0; i < this.sizes; i++) {
+            this.array[i] = [];
+            for (let j = 0; j < this.sizes; j++) {
+                this.array[i][j] = this.ground;
             }
         }
     }
