@@ -22,6 +22,8 @@ class Game {
             this.area.update();
             if (this.position.x === this.area.sizes.x - 1 && this.position.y === this.area.sizes.y - 2) {
                 this.area.context.fillStyle = "red";
+                this.area.context.font = "20px Arial";
+                this.area.context.fillText("You won!", 20, 20);
                 console.log("JOO");
             }
         }
