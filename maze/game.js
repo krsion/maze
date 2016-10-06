@@ -5,9 +5,6 @@ class Game {
         this.defaultPos = position;
         this.visited = visited;
         this.position = position;
-        /*
-            TODO: Controls
-        */
     }
     start() {
         this.position = this.defaultPos;
@@ -20,11 +17,11 @@ class Game {
             this.position = newPos;
             this.area.setAt(this.position, this.cursor);
             this.area.update();
-            if (this.position.x === this.area.sizes.x - 1 && this.position.y === this.area.sizes.y - 2) {
+            let end = new Coords(this.area.sizes.x - 1, this.area.sizes.y - 2);
+            if (this.position.equals(end)) {
                 this.area.context.fillStyle = "red";
                 this.area.context.font = "20px Arial";
                 this.area.context.fillText("You won!", 20, 20);
-                console.log("JOO");
             }
         }
     }
