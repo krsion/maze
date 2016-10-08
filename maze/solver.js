@@ -5,7 +5,13 @@ class Solver {
     solve() {
         let directions = [new Coords(0, -1), new Coords(0, 1), new Coords(-1, 0), new Coords(1, 0)];
         let end = new Coords(this.game.area.sizes.x - 1, this.game.area.sizes.y - 2);
-        let array = this.game.area.array.slice();
+        let array = [];
+        for (let i = 0; i < this.game.area.sizes.y; i++) {
+            array.push(new Array());
+            for (let j = 0; j < this.game.area.sizes.x; j++) {
+                array[i].push(this.game.area.array[i][j]);
+            }
+        }
         let position = this.game.position;
         let path = [position];
         while(!position.equals(end)) {
@@ -15,51 +21,18 @@ class Solver {
             });
             if (empty) {
                 path.push(new Coords(position.x + empty.x, position.y + empty.y));
-                console.log("ou je");
             }
             else {
                 path.pop();
-                console.log("ou nou");
             }
-            //console.log(position);
-            array[position.y][position.x] = "black";
+            array[position.y][position.x] = "#ff5733";
             position = path[path.length - 1];
         }
         path.forEach((item) => {
-            console.log("printing");
             this.game.area.setAt(item, this.game.visited);
 
         });
-        console.log(position);
         this.game.area.setAt(position, this.game.cursor);
         this.game.area.update();
     }
-    solvef() {
-        while (!(this.game.position.x === this.game.area.sizes.x && this.game.position.y === this.game.area.sizes.y - 2)) {
-            let emptys = directions.filter((dir) => {
-                let newPos = new Coords(this.game.position.x + dir.x, this.game.position.y + dir.y);
-                return (this.game.area.getAt(newPos) === this.game.area.ground);
-            });
-            console.log(directions);
-            if (emptys.length > 0) {
-                this.game.move(emptys[0]);
-                console.log("MOVED TO EMPTY " + emptys[0]);
-            }
-            else {
-                let visiteds = directions.filter((dir) => {
-                    let newPos = new Coords(this.game.position.x + dir.x, this.game.position.y + dir.y);
-                    return (this.game.area.getAt(newPos) === this.game.visited);
-                });
-                if (visiteds.length > 0) {
-                    this.game.move(visiteds[0]);
-                    console.log("MOVED TO VISITED " + visiteds[0]);
-                }
-                else {
-                    console.log("SOME ERROR");
-                    return;
-                }
-            }
-        }
-    }
-
 }
