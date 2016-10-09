@@ -1,6 +1,7 @@
 class Solver {
-    constructor(game) {
+    constructor(game, visited) {
         this.game = game;
+        this.visited = visited;
     }
     solve() {
         let directions = [new Coords(0, -1), new Coords(0, 1), new Coords(-1, 0), new Coords(1, 0)];
@@ -17,7 +18,7 @@ class Solver {
         while(!position.equals(end)) {
             let empty = directions.find((dir) => {
                 let newPos = new Coords(position.x + dir.x, position.y + dir.y);
-                return (array[newPos.y][newPos.x] === this.game.area.ground);
+                return (array[newPos.y][newPos.x] === this.game.visited || array[newPos.y][newPos.x] === this.game.area.ground);
             });
             if (empty) {
                 path.push(new Coords(position.x + empty.x, position.y + empty.y));
@@ -25,7 +26,7 @@ class Solver {
             else {
                 path.pop();
             }
-            array[position.y][position.x] = "#ff5733";
+            array[position.y][position.x] = this.visited;
             position = path[path.length - 1];
         }
         path.forEach((item) => {
