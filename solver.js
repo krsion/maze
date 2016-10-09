@@ -32,6 +32,7 @@ class Solver {
             this.game.area.setAt(item, this.game.visited);
 
         });
+        this.game.position = position;
         this.game.area.setAt(position, this.game.cursor);
         this.game.area.update();
     }
