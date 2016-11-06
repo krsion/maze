@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            canvas {
-                background-color: lightblue;
-            }
-        </style>
+        <title>Maze</title>
+        <link rel="stylesheet" href="w3.css">
+        <link rel="stylesheet" href="w3-theme-blue-grey.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
         <script src="index.js"></script>
         <script src="area.js"></script>
         <script src="generator.js"></script>
@@ -13,14 +12,27 @@
         <script src="game.js"></script>
         <script src="solver.js"></script>
     </head>
-    <body>
-        <input type="button" id="generate" value="generate">
-        <input type="button" id="solve" value="solve">
-        Controls:
-        <input type="button" id="up" value="up">
-        <input type="button" id="down" value="down">
-        <input type="button" id="left" value="left">
-        <input type="button" id="right" value="right">
-        <div id="maze"></div>
+    <body class="w3-theme">
+        <h1 class="w3-theme-dark w3-center">Maze</h1>
+        <div class="w3-center w3-content" >
+
+            <div class="w3-row w3-theme-dark">
+                <div class="w3-half">
+                    <input type="button" class="w3-btn w3-theme-dark" id="generate" value="generate">
+                    <input type="button" class="w3-btn w3-theme-dark" id="solve" value="solve">
+                </div>
+                Controls:
+                <div class="w3-half">
+                    <div class=" w3-center">
+                        <i class="fa fa-arrow-up w3-theme-dark w3-btn" id="up"></i>
+                        <div><i class="fa fa-arrow-left w3-theme-dark w3-btn" id="left"></i>
+                        <i class="fa fa-arrow-right w3-theme-dark w3-btn" id="right"></i></div>
+                        <i class="fa fa-arrow-down w3-theme-dark w3-btn" id="down"></i>
+                    </div>
+
+                </div>
+            </div>
+            <div id="maze"></div>
+        </div>
     </body>
 </html>
