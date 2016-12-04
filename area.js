@@ -54,6 +54,5 @@ class Area {
     }
     setAt(position, color) {
         this.array[position.y][position.x] = color;
-        //this.update(); - program was very slow because of this
     }
 }

@@ -6,11 +6,12 @@ window.onload = () => {
 
     document.getElementById("maze").appendChild(area.canvas);
     document.getElementById("generate").onclick = () => {
-        area.restart();
-        gen.generate();
-        game.start();
-        area.draw();
-    }
+            area.restart();
+            gen.generate();
+            game.start();
+            area.draw();
+        }
+        //display controls
     document.getElementById("solve").onclick = () => {
         solver.solve();
     }
@@ -24,8 +25,29 @@ window.onload = () => {
         game.move(new Coords(1, 0));
     }
     document.getElementById("left").onclick = () => {
-        game.move(new Coords(-1, 0));
-    }
+            game.move(new Coords(-1, 0));
+        }
+    //keyboard controls
+    document.documentElement.onkeydown = function(e) {
+        switch (e.keyCode) {
+            case 37:
+                // left arrow
+                game.move(new Coords(-1, 0));
+                break;
+            case 38:
+                // up arrow
+                game.move(new Coords(0, -1));
+                break;
+            case 39:
+                // right arrow
+                game.move(new Coords(1, 0));
+                break;
+            case 40:
+                // down arrow
+                game.move(new Coords(0, 1));
+                break;;
+        }
+    };
 
     gen.generate();
     game.start();

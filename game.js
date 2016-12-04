@@ -12,7 +12,7 @@ class Game {
     }
     move(coords) {
         let newPos = new Coords(this.position.x + coords.x, this.position.y + coords.y);
-        if (this.area.getAt(newPos) !== this.area.wall) {
+        if (this.area.getAt(newPos) !== this.area.wall && newPos.x >=0 && newPos.x < this.area.sizes.x && newPos.y >= 0 && newPos.y < this.area.sizes.y) {
             this.area.setAt(this.position, this.visited);
             this.position = newPos;
             this.area.setAt(this.position, this.cursor);
