@@ -37,9 +37,9 @@ class Area {
         let inPx = this.toPx(this.sizes);
         this.context.clearRect(0,0, inPx.x, inPx.y);
         this.array = [];
-        for (let i = 0; i < this.sizes.x; i++) {
+        for (let i = 0; i < this.sizes.y; i++) {
             this.array[i] = [];
-            for (let j = 0; j < this.sizes.y; j++) {
+            for (let j = 0; j < this.sizes.x; j++) {
                 this.array[i][j] = this.ground;
             }
         }

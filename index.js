@@ -1,5 +1,5 @@
 window.onload = () => {
-    let area = new Area("steelblue", "wheat", new Coords(55, 55), new Coords(10, 10));
+    let area = new Area("steelblue", "wheat", new Coords(57, 57), new Coords(10, 10));
     let gen = new Generator(area, "yellowgreen", "red");
     let game = new Game(area, "red", "orange", new Coords(0, 1));
     let solver = new Solver(game, "blue");
